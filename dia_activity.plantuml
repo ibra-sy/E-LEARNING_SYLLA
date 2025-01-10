@@ -1,0 +1,37 @@
+@startuml activity
+
+start
+
+:Utilisateur se connecte à la plateforme;
+if (Identifiants valides ?) then (Oui)
+    :Rediriger vers le tableau de bord;
+    if (Rôle de l'utilisateur ?) then (Administrateur)
+        :Accéder à la gestion des utilisateurs et des rôles;
+        :Superviser les statistiques globales;
+    else if (Responsable Scolarité)
+        :Gérer les structures académiques (filières, classes);
+        :Inscrire les enseignants et étudiants;
+        :Affecter les matières aux enseignants;
+    else if (Comptable)
+        :Suivre les paiements des étudiants;
+        :Traiter les paies des enseignants;
+        :Générer des rapports financiers;
+    else if (Enseignant)
+        :Accéder aux matières assignées;
+        :Organiser les cours en chapitres et leçons;
+        :Publier des contenus pédagogiques;
+        :Créer quiz et devoirs;
+    else if (Étudiant)
+        :Consulter les cours disponibles;
+        :Participer aux forums et chats;
+        :Passer des quiz et devoirs;
+        :Consulter ses résultats et moyennes;
+    endif
+else (Non)
+    :Afficher un message d'erreur;
+    :Demander de réessayer ou de réinitialiser le mot de passe;
+endif
+
+stop
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml usecase
+
+actor Administrateur as Admin
+actor ResponsableScolarite as RespScol
+actor Comptabilite as Comptable
+actor Enseignant as Prof
+actor Etudiant as Eleve
+
+usecase "Gérer les utilisateurs" as UC1
+usecase "Superviser la plateforme" as UC2
+usecase "Gérer les structures académiques" as UC3
+usecase "Inscrire enseignants et étudiants" as UC4
+usecase "Affecter les matières" as UC5
+usecase "Suivre les paiements" as UC6
+usecase "Traiter la paie" as UC7
+usecase "Générer des rapports financiers" as UC8
+usecase "Organiser les cours" as UC9
+usecase "Publier du contenu" as UC10
+usecase "Créer quiz et devoirs" as UC11
+usecase "Gérer forums et chats" as UC12
+usecase "Accéder aux cours" as UC13
+usecase "Participer aux forums et chats" as UC14
+usecase "Passer quiz et devoirs" as UC15
+usecase "Consulter les notes" as UC16
+
+Admin --> UC1
+Admin --> UC2
+RespScol --> UC3
+RespScol --> UC4
+RespScol --> UC5
+Comptable --> UC6
+Comptable --> UC7
+Comptable --> UC8
+Prof --> UC9
+Prof --> UC10
+Prof --> UC11
+Prof --> UC12
+Eleve --> UC13
+Eleve --> UC14
+Eleve --> UC15
+Eleve --> UC16
+
+@enduml

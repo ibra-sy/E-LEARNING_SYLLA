@@ -1,0 +1,42 @@
+@startuml sequence
+
+' Diagramme de séquence pour l'inscription d'un utilisateur
+actor Utilisateur as u
+participant "Page Inscription" as p
+participant "Base de données" as db
+
+u -> p: Remplir le formulaire d'inscription
+p -> db: Vérifier si l'email est unique
+alt Email unique
+    db --> p: OK
+    p -> db: Enregistrer les informations utilisateur
+    db --> p: Succès
+    p -> u: Inscription réussie
+else Email déjà utilisé
+    db --> p: Erreur
+    p -> u: Afficher un message d'erreur
+end
+
+' Diagramme de séquence pour la connexion d'un utilisateur
+u -> p: Remplir le formulaire de connexion
+p -> db: Vérifier les identifiants (email, mot de passe)
+alt Identifiants corrects
+    db --> p: OK
+    p -> u: Connexion réussie
+else Identifiants incorrects
+    db --> p: Erreur
+    p -> u: Afficher un message d'erreur
+end
+
+' Diagramme de séquence pour l'accès à un cours
+u -> p: Sélectionner un cours
+p -> db: Récupérer les informations du cours
+alt Cours disponible
+    db --> p: Détails du cours
+    p -> u: Afficher le contenu du cours
+else Cours indisponible
+    db --> p: Erreur
+    p -> u: Afficher un message d'erreur
+end
+
+@enduml

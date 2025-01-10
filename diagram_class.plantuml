@@ -1,0 +1,132 @@
+@startuml class
+
+class Utilisateur {
+    +id: int
+    +nom: String
+    +email: String
+    +motDePasse: String
+    +role: String
+    +seConnecter()
+    +seDeconnecter()
+}
+
+class Administrateur {
+    +ajouterUtilisateur(): void
+    +definirRole(): void
+    +superviserPlateforme(): void
+}
+
+class ResponsableScolarite {
+    +gererStructuresAcademiques(): void
+    +inscrireUtilisateurs(): void
+    +affecterMatieres(): void
+}
+
+class Comptabilite {
+    +suivrePaiements(): void
+    +traiterPaie(): void
+    +genererRapportsFinanciers(): void
+}
+
+class Enseignant {
+    +organiserCours(): void
+    +publierContenu(): void
+    +creerQuizDevoirs(): void
+    +gererForumsChats(): void
+}
+
+class Etudiant {
+    +accederCours(): void
+    +participerForumsChats(): void
+    +passerQuizDevoirs(): void
+    +visualiserNotes(): void
+}
+
+class Cours {
+    +id: int
+    +titre: String
+    +description: String
+    +format: String
+    +chapitres: List<Chapitre>
+    +ajouterChapitre(): void
+    +publier(): void
+}
+
+class Chapitre {
+    +id: int
+    +titre: String
+    +contenus: List<Contenu>
+}
+
+class Contenu {
+    +type: String
+    +data: Object
+}
+
+class Forum {
+    +id: int
+    +titre: String
+    +messages: List<Message>
+}
+
+class Chat {
+    +id: int
+    +participants: List<Utilisateur>
+    +messages: List<Message>
+}
+
+class Message {
+    +id: int
+    +auteur: Utilisateur
+    +texte: String
+    +date: Date
+}
+
+class Quiz {
+    +id: int
+    +titre: String
+    +questions: List<Question>
+    +tentativesMax: int
+    +ajouterQuestion(): void
+}
+
+class Question {
+    +id: int
+    +texte: String
+    +propositions: List<Proposition>
+    +bonneReponse: Proposition
+}
+
+class Proposition {
+    +id: int
+    +texte: String
+}
+
+class Evaluation {
+    +id: int
+    +note: float
+    +feedback: String
+}
+
+' Relations entre classes avec cardinalités et associations
+Utilisateur <|-- Administrateur
+Utilisateur <|-- ResponsableScolarite
+Utilisateur <|-- Comptabilite
+Utilisateur <|-- Enseignant
+Utilisateur <|-- Etudiant
+
+Enseignant "1" --> "*" Cours : enseigne
+Cours "1" --> "*" Chapitre : contient
+Chapitre "1" --> "*" Contenu : inclut
+Cours "1" --> "1" Forum : a
+Cours "1" --> "1" Chat : a
+Forum "1" --> "*" Message : contient
+Chat "1" --> "*" Message : contient
+Message "*" --> "1" Utilisateur : auteur
+Enseignant "1" --> "*" Quiz : cree
+Quiz "1" --> "*" Question : contient
+Question "1" --> "*" Proposition : propose
+Etudiant "*" --> "*" Evaluation : recoit
+Evaluation "1" --> "1" Quiz : evalue
+
+@enduml
