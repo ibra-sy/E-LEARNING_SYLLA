@@ -7,7 +7,9 @@ Ressources
 Maquette Figma
 
 La maquette Figma est accessible via le lien suivant :
-https://www.figma.com/design/kxJKOI0XcBFS88cWsZSE66/Untitled?node-id=0-1&t=KQNuqv8aMaLxTEJL-1
+https://www.figma.com/design/kxJKOI0XcBFS88cWsZSE66/Untitled?node-id=0-1&t=Hw3vNMAjZhn82BGO-1
+
+
 Diagrammes UML
 
 Voici les diagrammes UML utilisés pour ce projet. Les fichiers contenant les codes en PlantUML sont également disponibles dans le dépôt pour ceux qui souhaitent les modifier ou les réutiliser :
